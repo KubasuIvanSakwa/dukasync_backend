@@ -13,8 +13,8 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .database import get_db
-from .models import Shop, User
+from database import get_db
+from models import Shop, User
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

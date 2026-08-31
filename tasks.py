@@ -10,8 +10,8 @@ import os
 import httpx
 from sqlalchemy import select
 
-from .database import AsyncSessionLocal
-from .models import Product, RestockOrder, RestockStatus, Supplier
+from database import AsyncSessionLocal
+from models import Product, RestockOrder, RestockStatus, Supplier
 
 
 async def check_and_create_restock_order(product_id: int) -> None:

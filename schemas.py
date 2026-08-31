@@ -15,7 +15,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
-from .models import RestockStatus
+from models import RestockStatus
 
 
 # ---------------------------------------------------------------------------
