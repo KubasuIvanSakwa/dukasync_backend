@@ -20,7 +20,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .database import Base, engine, get_db
+from database import Base, engine, get_db
 from .models import Product, RestockOrder, RestockStatus, Sale, Shop, StockAdjustment, Supplier, User
 from .auth import get_current_user, require_shop_access, router as auth_router
 from .tasks import check_and_create_restock_order

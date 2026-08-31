@@ -33,7 +33,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship, synonym
 
-from .database import Base
+from database import Base
 
 
 # ---------------------------------------------------------------------------
