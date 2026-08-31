@@ -19,7 +19,7 @@ def compile_bigint_for_sqlite(type_, compiler, **kwargs):
 
 
 from backend import main, tasks
-from databse import Base, get_db
+from database import Base, get_db
 from backend.models import RestockOrder, Supplier
 
 
