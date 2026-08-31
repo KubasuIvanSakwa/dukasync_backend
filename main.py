@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, status
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, status, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy import select
@@ -133,12 +133,16 @@ async def update_shop(
 
 
 @app.delete("/api/shops/{shop_id}", status_code=status.HTTP_204_NO_CONTENT, tags=["Shops"])
-async def delete_shop(shop_id: int, db: AsyncSession = Depends(get_db)) -> None:
+async def delete_shop(shop_id: int, db: AsyncSession = Depends(get_db)):
     shop = await db.get(Shop, shop_id)
     if not shop:
         raise HTTPException(status_code=404, detail="Shop not found")
+    
     await db.delete(shop)
-
+    await db.commit()  # Save the deletion to your Postgres database!
+    
+    # Explicitly return an empty response with no body content
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 # ===========================================================================
 # Suppliers
