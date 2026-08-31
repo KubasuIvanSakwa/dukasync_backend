@@ -5,14 +5,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY backend/requirements.txt /app/backend/requirements.txt
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
-COPY alembic.ini /app/alembic.ini
-COPY backend /app/backend
-COPY backend/entrypoint.sh /app/backend/entrypoint.sh
-RUN chmod +x /app/backend/entrypoint.sh
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# COPY alembic.ini /app/alembic.ini
+COPY . /app/
+
+RUN chmod +x /app/entrypoint.sh
 
 EXPOSE 8000
 
-ENTRYPOINT ["/app/backend/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
+
