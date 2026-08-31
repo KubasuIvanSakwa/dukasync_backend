@@ -22,7 +22,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 from database import Base
-from backend import models  # noqa: F401 - registers all ORM tables
+import models  # noqa: F401 - registers all ORM tables
 
 target_metadata = Base.metadata
 
